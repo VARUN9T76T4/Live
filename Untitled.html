@@ -1,0 +1,184 @@
+<html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Today’s Live Classes Await You! Sinha king</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&amp;family=Raleway:wght@400;600&amp;display=swap" rel="stylesheet">
+  <style>
+        body {
+            font-family: 'Raleway', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #2a2a72, #009ffd);
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            font-size: 48px;
+            color: #ffffff;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .class-card {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            width: 90%;
+            max-width: 500px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .class-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.8);
+        }
+
+        h2 {
+            font-size: 26px;
+            color: #00d4ff;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 18px;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .timer {
+            font-size: 18px;
+            font-weight: 600;
+            color: #32cd32;
+            margin-bottom: 20px;
+        }
+
+        .status-btn {
+            background: linear-gradient(135deg, #444, #555);
+            color: #ffffff;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .status-btn:hover {
+            background: linear-gradient(135deg, #0078d4, #00a8ff);
+            transform: scale(1.05);
+        }
+
+        .status-btn:active {
+            transform: scale(0.95);
+        }
+
+        .blink-dot {
+            background-color: #ff0000;
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            animation: blink 1s infinite alternate;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        footer {
+            position: fixed;
+            bottom: 10px;
+            font-size: 14px;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            .status-btn {
+                font-size: 14px;
+            }
+        }
+    </style>
+  <script>
+        function countdown(targetDate, timerId, buttonId, endHour, endMinute, liveLink) {
+            const interval = setInterval(() => {
+                const now = new Date();
+                const distance = targetDate - now;
+
+                if (distance > 0) {
+                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((distance % 1000) / 1000);
+                    document.getElementById(timerId).innerHTML = `${hours}h ${minutes}m ${seconds}s remaining`;
+                } else if (now.getHours() < endHour || (now.getHours() === endHour && now.getMinutes() < endMinute)) {
+                    clearInterval(interval);
+                    document.getElementById(timerId).innerHTML = `🎥 Live now!`;
+                    document.getElementById(buttonId).innerHTML = 'Join Now <span class="blink-dot"></span>';
+                    document.getElementById(buttonId).onclick = () => window.location.href = liveLink;
+                } else {
+                    clearInterval(interval);
+                    document.getElementById(timerId).innerHTML = `📌 Session ended.`;
+                    document.getElementById(buttonId).textContent = "Ended";
+                    document.getElementById(buttonId).style.cursor = "not-allowed";
+                }
+            }, 1000);
+        }
+
+        window.onload = () => {
+            const now = new Date();
+            const firstClassTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 17, 35, 0); 
+            const secondClassTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 21, 0, 0); 
+
+            countdown(firstClassTime, "timer1", "button1", 19, 0, 'https://rolexcoderz.netlify.app/playx/?url=https://d1kw75zcv4u98c.cloudfront.net/out/v1/287810d967cc428e9bd992002e55b72c/index_1.m3u8&id=RolexCoderZ'); 
+            countdown(secondClassTime, "timer2", "button2", 22, 0, 'https://rolexcoderz.netlify.app/playx/?url=https://d2xqn12y4qo6nr.cloudfront.net/out/v1/4dacc3cc62ed4047b817b91580e11584/index_1.m3u8&id=RolexCoderZ'); 
+        };
+    </script>
+ </head>
+ <body>
+  <h1>Today’s Live Classes Await You!</h1>
+  <div class="class-card">
+   <h2>🌟 First Session: Learn &amp; Grow</h2>
+   <p>📅 <strong>Starts at 5:35 PM sharp</strong>. Be there!</p>
+   <div class="timer" id="timer1">
+    ⏳ Calculating...
+   </div><button class="status-btn" id="button1">📅 Coming Soon</button>
+  </div>
+  <div class="class-card">
+   <h2>🌙 Evening Session: Deep Insights</h2>
+   <p>📅 <strong>Starts at 9:00 PM</strong>. Don’t miss out!</p>
+   <div class="timer" id="timer2">
+    ⏳ Calculating...
+   </div><button class="status-btn" id="button2">📅 Coming Soon</button>
+  </div>
+  <footer>
+   © 2025 ~MłⱠⱠłØ₦₳łⱤɆ. Curated with love and passion. 💖
+  </footer>
+ </body>
+</html>
